@@ -82,12 +82,23 @@ Rater.run = function(){
 };
 
 Rater.openRateDialog = function(){
-	var a = Ti.UI.createAlertDialog({
+	
+	if( Titanium.Platform.osname == 'android' ){
+		
+	    var a = Ti.UI.createAlertDialog({
+		title: "rating_title",
+		message: 'rating_message',
+		buttonNames: ["rating_option_1","rating_option_2", "rating_option_3"],
+	    });
+	}else{
+	    var a = Ti.UI.createAlertDialog({
 		title: L("rating_title"),
 		message: String.format(L('rating_message'), Rater.appName),
 		buttonNames: [L("rating_option_1"), L("rating_option_2"), L("rating_option_3")],
 		cancel: 2
-	});
+	    });
+	}
+
 
 	a.addEventListener('click',function(e){
 		switch(e.index) {
