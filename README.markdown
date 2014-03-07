@@ -9,7 +9,8 @@ Reminders stop if the user clicks the "Rate Now" or "Don't Remind Me" options.
 In your app.js (or elsewhere), call:
 
 ```javascript
-Ti.include("rater.js");
+Ti.include("rater.js");//for ios
+Ti.include(Titanium.Filesystem.resourcesDirectory+"js/rater.js");//for android
 Rater.init("[Your app name]","[Your app's App Store ID]");
 ```
 
